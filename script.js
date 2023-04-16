@@ -8,96 +8,39 @@
     const langOpt = document.getElementById("lang")
     const ratingOpt = document.getElementById("rating")
     const cardContainer = document.getElementById("cardContainer")
-    let genres = []
-    let years = []
-    let languages = []
-    let ratings = []
 
-    data.forEach(function (obj) {
-        const objGenres = obj.genres
-        if (Array.isArray(objGenres)) {
-            objGenres.forEach(function (genre) {
-                if (!genres.includes(genre)) {
-                    genres.push(genre)
-                }
-            })
-        }
-    })
+    const genres = [...new Set(data.flatMap(obj => obj.genres).filter(Boolean))];
+    const years = [...new Set(data.map(obj => obj.release_date.slice(0, 4)).filter(Boolean))];
+    const languages = [...new Set(data.map(obj => obj.original_language).filter(Boolean))];
+    const ratings = [...new Set(data.map(obj => obj.vote_average).filter(Boolean))];
 
-    genres.sort(function (a, b) {
-        if (a < b) {
-            return -1;
-        }
-        if (a > b) {
-            return 1;
-        }
-        return 0;
-    });
+    // Sort values
+    genres.sort();
+    years.sort((a, b) => b - a);
+    languages.sort();
+    ratings.sort((a, b) => b - a);
 
-    genres.forEach(function (genre) {
-        const optElem = document.createElement("option")
-        optElem.innerHTML = genre
-        optElem.value = genre
-        genreOpt.appendChild(optElem)
-    })
+    // Add options to select elements
+    function addOptions(options, values) {
+        values.forEach(value => {
+            const optElem = document.createElement("option");
+            optElem.innerHTML = value;
+            optElem.value = value;
+            options.appendChild(optElem);
+        });
+    }
 
-    data.forEach(function (obj) {
-        const releaseYear = obj.release_date.slice(0, 4)
-        if (!years.includes(releaseYear)) {
-            years.push(releaseYear)
-        }
-    })
+    addOptions(genreOpt, genres);
+    addOptions(yearOpt, years);
+    addOptions(langOpt, languages);
+    addOptions(ratingOpt, ratings);
 
-    years.sort(function (a, b) {
-        return b - a
-    })
-
-    years.forEach(function (year) {
-        const optElem = document.createElement("option")
-        optElem.innerHTML = year
-        optElem.value = year
-        yearOpt.appendChild(optElem)
-    })
-
-    data.forEach(function (obj) {
-        const language = obj.original_language
-        if (!languages.includes(language)) {
-            languages.push(language)
-        }
-    })
-
-    languages.sort(function (a, b) {
-        if (a < b) {
-            return -1;
-        }
-        if (a > b) {
-            return 1;
-        }
-        return 0;
-    });
-
-    languages.forEach(function (lang) {
-        const optElem = document.createElement("option")
-        optElem.innerHTML = lang
-        optElem.value = lang
-        langOpt.appendChild(optElem)
-    })
-
-    data.forEach(function (obj) {
-        const rating = obj.vote_average
-        if (!ratings.includes(rating)) {
-            ratings.push(rating)
-        }
-    })
-    ratings.sort(function (a, b) {
-        return b - a
-    })
-    ratings.forEach(function (rate) {
-        const optElem = document.createElement("option")
-        optElem.innerHTML = rate
-        optElem.value = rate
-        ratingOpt.appendChild(optElem)
-    })
+    // Format time
+    function formatTime(minutes) {
+        const hours = Math.floor(minutes / 60);
+        const mins = minutes % 60;
+        return `${hours}h ${mins}m`;
+    }
 
     let cardIndex = 0;
     function formatTime(minutes) {
