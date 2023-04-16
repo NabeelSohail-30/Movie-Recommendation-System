@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+</head>
+
+<body data-barba="wrapper">
+    <main>
+        <header>
+            <div class="search_input">
+                <input class="inputSearch" id="searchBar" type="text" placeholder="Search for Movies">
+            </div>
+        </header>
+        <section class="content_parent">
+            <section class="content">
+                <div class="select_menu_wrapper">
+                    <select id="genre">
+                        <option value="all" selected>Genre</option>
+                    </select>
+                    <select id="year">
+                        <option value="all" selected>Year</option>
+                    </select>
+                    <select id="lang">
+                        <option value="all" selected>Language</option>
+                    </select>
+                    <select id="rating">
+                        <option value="all" selected>Rating</option>
+                    </select>
+                    <button id="apply">Apply</button>
+                </div>
+                <section id="cardContainer" class="cards_wrapper">
+                    <!---All Movie Cards will be displayed here-->
+                </section>
+                <section class="btn">
+                    <button id="load-more-btn">Load More</button>
+                </section>
+            </section>
+        </section>
+    </main>
+</body>
+<script src="script.js"></script>
+
+</html>
