@@ -20,6 +20,36 @@ body {
     color: var(--white-);
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 8rem;
+    background-color: var(--light);
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--white-);
+}
+
+.navbar ul {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--white-);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.navbar a:hover {
+    color: var(--light);
+}
+
 .light {
     color: var(--light);
 }
@@ -192,6 +222,66 @@ header {
     padding: 0 .4rem;
     border-radius: 0 .2rem .2rem 0;
     background-color: black;
+}
+
+footer {
+    background-color: var(--light);
+    color: var(--white-);
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: relative;
+    width: 100%;
+    bottom: 0px;
+}
+
+.watermark {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.copyright {
+    font-size: 14px;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+.portfolio a {
+    font-size: 14px;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #b9d6f2;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.media-icons {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.media-icons li {
+    margin: 0px 10px;
+}
+
+.media-icons li a img {
+    width: 40px;
+    height: 40px;
+}
+
+hr {
+    width: 100vh;
+    border: 1px solid #b9d6f2;
+    margin: auto;
 }
 
 @media only screen and (max-width:500px) {
